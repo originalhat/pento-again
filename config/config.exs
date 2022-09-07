@@ -24,10 +24,12 @@ config :pento, PentoWeb.Endpoint,
 #
 # For production it's recommended to configure a different adapter
 # at the `config/runtime.exs`.
-config :pento, Pento.Mailer, adapter: Swoosh.Adapters.Local
+config :pento, Pento.Mailer,
+  adapter: Swoosh.Adapters.Sendgrid,
+  api_key: System.get_env("SENDGRID_API_KEY")
 
 # Swoosh API client is needed for adapters other than SMTP.
-config :swoosh, :api_client, false
+config :swoosh, :api_client, Swoosh.ApiClient.Hackney
 
 # Configure esbuild (the version is required)
 config :esbuild,
