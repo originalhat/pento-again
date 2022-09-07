@@ -1,6 +1,6 @@
 defmodule PentoWeb.UserAuthLive do
   import Phoenix.LiveView
-  alias PentoAccounts
+  alias Pento.Accounts
 
   def on_mount(_, params, %{"user_token" => user_token}, socket) do
     user = Accounts.get_user_by_session_token(user_token)
